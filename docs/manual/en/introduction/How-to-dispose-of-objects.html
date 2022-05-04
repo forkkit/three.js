@@ -4,7 +4,6 @@
 <head>
 	<meta charset="utf-8">
 	<base href="../../../" />
-	<script src="list.js"></script>
 	<script src="page.js"></script>
 	<link type="text/css" rel="stylesheet" href="page.css" />
 </head>
@@ -45,19 +44,17 @@
 		Similar to buffers, this object can only be deleted by calling [page:Texture.dispose]().
 	</p>
 
+	<p>
+		If you use an *ImageBitmap* as the texture's data source, you have to call [link:https://developer.mozilla.org/en-US/docs/Web/API/ImageBitmap/close ImageBitmap.close]() at the application level to dispose of all CPU-side resources.
+		An automated call of *ImageBitmap.close()* in [page:Texture.dispose]() is not possible, since the image bitmap becomes unusable, and the engine has no way of knowing if the image bitmap is used elsewhere.
+	</p>
+
 	<h2>Render Targets</h2>
 
 	<p>
 		Objects of type [page:WebGLRenderTarget] not only allocate an instance of [link:https://developer.mozilla.org/en-US/docs/Web/API/WebGLTexture WebGLTexture] but also
 		[link:https://developer.mozilla.org/en-US/docs/Web/API/WebGLFramebuffer WebGLFramebuffer]s and [link:https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderbuffer WebGLRenderbuffer]s
 		for realizing custom rendering destinations. These objects are only deallocated by executing [page:WebGLRenderTarget.dispose]().
-	</p>
-
-	<h2>Scenes</h2>
-
-	<p>
-		The renderer maintains for scenes special data structures for sorting and rendering. If for some reasons a scene object becomes obsolete in an application,
-		call [page:Scene.dispose]() in order to free these resources.
 	</p>
 
 	<h2>Miscellaneous</h2>
@@ -74,7 +71,7 @@
 	<p>
 		This question was asked many times by the community so it's important to clarify this matter. Fact is that *three.js* does not know the lifetime or scope
 		of user-created entities like geometries or materials. This is the responsibility of the application. For example even if a material is currently not used for rendering,
-		it might base necessary for the next frame. So if the application decides that a certain object can be deleted, it has to	notify the engine via calling the respective
+		it might be necessary for the next frame. So if the application decides that a certain object can be deleted, it has to	notify the engine via calling the respective
 		*dispose()* method.
 	</p>
 
@@ -88,7 +85,7 @@
 
 	<p>
 		Yes. It's possible to evaluate [page:WebGLRenderer.info], a special property of the renderer with a series of statistical information about the graphics board memory
-		and the rendering process. Among other things, it tells you have many textures, geometries and shader programs are internally stored. If you notice performance problems
+		and the rendering process. Among other things, it tells you how many textures, geometries and shader programs are internally stored. If you notice performance problems
 		in your application, it's a good idea to debug this property in order to easily identify a memory leak.
 	</p>
 

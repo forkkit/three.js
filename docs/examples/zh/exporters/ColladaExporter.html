@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 	<head>
 		<meta charset="utf-8" />
 		<base href="../../../" />
-		<script src="list.js"></script>
 		<script src="page.js"></script>
 		<link type="text/css" rel="stylesheet" href="page.css" />
 	</head>
@@ -13,20 +12,20 @@
 		<p class="desc">
 		An exporter for *Collada*.
 		<br /><br />
-		<a href="https://www.khronos.org/collada/">Collada</a> is a
+		<a href="https://www.khronos.org/collada/" target="_blank">Collada</a> is a
 		file format for robust representation of scenes, materials, animations, and other 3D content in an xml format.
 		This exporter only supports exporting geometry, materials, textures, and scene hierarchy.
 		</p>
 
-		<h2>Example</h2>
+		<h2>代码示例</h2>
 
 		<code>
 		// Instantiate an exporter
-		var exporter = new THREE.ColladaExporter();
+		const exporter = new ColladaExporter();
 
 		// Parse the input and generate the ply output
-		var data = exporter.parse( scene, null, options );
-		downloadFile(data);
+		const data = exporter.parse( scene, null, options );
+		downloadFile( data );
 		</code>
 
 		<h2>Constructor</h2>
@@ -40,7 +39,7 @@
 
 		<h2>Methods</h2>
 
-		<h3>[method:null parse]( [param:Object3D input], [param:Function onCompleted], [param:Object options] )</h3>
+		<h3>[method:Object parse]( [param:Object3D input], [param:Function onCompleted], [param:Object options] )</h3>
 		<p>
 		[page:Object input] — Object3D to be exported<br />
 		[page:Function onCompleted] — Will be called when the export completes. Optional. The same data is immediately returned from the function.<br />
@@ -58,7 +57,7 @@
 			// Collada file content
 			data: "",
 
-			// List of referenced texures
+			// List of referenced textures
 			textures: [{
 
 				// File directory, name, and extension of the texture data
@@ -77,7 +76,7 @@
 		<h2>Source</h2>
 
 		<p>
-			[link:https://github.com/mrdoob/three.js/blob/master/examples/js/exporters/ColladaExporter.js examples/js/exporters/ColladaExporter.js]
+			[link:https://github.com/mrdoob/three.js/blob/master/examples/jsm/exporters/ColladaExporter.js examples/jsm/exporters/ColladaExporter.js]
 		</p>
 	</body>
 </html>
